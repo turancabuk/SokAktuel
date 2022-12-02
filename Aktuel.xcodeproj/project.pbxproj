@@ -18,6 +18,7 @@
 		5C984DA229353510000BB027 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C984DA129353510000BB027 /* Constant.swift */; };
 		5C984DA62936A720000BB027 /* ProductListCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C984DA52936A720000BB027 /* ProductListCellViewController.swift */; };
 		5C984DA82936A80F000BB027 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C984DA72936A80F000BB027 /* MainViewModel.swift */; };
+		5C984DAA2936B06F000BB027 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C984DA92936B06F000BB027 /* ModelData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		5C984DA129353510000BB027 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		5C984DA52936A720000BB027 /* ProductListCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListCellViewController.swift; sourceTree = "<group>"; };
 		5C984DA72936A80F000BB027 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		5C984DA92936B06F000BB027 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				5C984D9329351D8E000BB027 /* MainModel.swift */,
+				5C984DA92936B06F000BB027 /* ModelData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 			files = (
 				5C984D9429351D8E000BB027 /* MainModel.swift in Sources */,
 				5C984D8329351D62000BB027 /* MainViewController.swift in Sources */,
+				5C984DAA2936B06F000BB027 /* ModelData.swift in Sources */,
 				5C984DA62936A720000BB027 /* ProductListCellViewController.swift in Sources */,
 				5C984D9F29352CBE000BB027 /* Webservice.swift in Sources */,
 				5C984D7F29351D62000BB027 /* AppDelegate.swift in Sources */,
@@ -383,7 +387,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Aktuel/Utilities/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = Main.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -411,7 +415,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Aktuel/Utilities/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = Main.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

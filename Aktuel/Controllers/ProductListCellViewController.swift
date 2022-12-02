@@ -14,4 +14,8 @@ class ProductListCellViewController: UITableViewCell {
     @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var productCategory: UILabel!
     
+    func configCells(model: Product?){
+        self.productTitle.text = model?.title!
+    }
+    
 }

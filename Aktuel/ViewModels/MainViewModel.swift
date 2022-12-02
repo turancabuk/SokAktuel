@@ -5,32 +5,25 @@
 
 import Foundation
 
-struct productModel {
-    let productDescription: String?
-    let madein: String?
-    let brand: String?
-    let id: Int?
-    let price: String?
-    let createdAt: String
-    let title: String?
-    let category: String
-    let imageMini: String
-    let imageThumbnail: String?
-    let imageOriginal: String?
-    
-    
-    init(data: Product) {
-        self.productDescription = data.productDescription
-        self.madein = data.madein
-        self.brand = data.brand
-        self.id = data.id
-        self.price = data.price?.originalStr
-        self.createdAt = data.createdAt ?? ""
-        self.title = data.title
-        self.category = data.categoryBreadcrumb ?? ""
-        self.imageMini = data.imageTypes?.mini ?? ""
-        self.imageThumbnail = data.imageTypes?.thumbnail ?? ""
-        self.imageOriginal = data.imageTypes?.original ?? ""
-    
+final class MainViewModel {
+ 
+    var productList = [Product]()
+    private let webservice: WebserviceProtocol = WebService()
+   
+    func getProducts(completion: @escaping (Result<Aktuel, Error>) -> Void) {
+        
+        let userRequest = UserRequest()
+        
+        webservice.fetch(request: userRequest, response: Aktuel.self, with: .getAktuel, completion: { result in
+            switch result {
+            case .success(let response):
+                if let products = response.payload?.products {
+                    self.productList = products
+                }
+                completion(result)
+            case .failure(let error):
+                print(error)
+            }
+        })
     }
 }

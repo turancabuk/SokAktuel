@@ -1,16 +1,17 @@
 //
 //  Webservice.swift
 //  Aktuel
-//
 //  Created by Turan Çabuk on 28.11.2022.
 
 import Foundation
 
 protocol WebserviceProtocol {
-    func fetch<T: Codable>(response: T.Type, with path: AktuelAPICall, completion: @escaping (Result <T, Error>) -> Void)
+    func fetch<T: Codable>(request: BaseRequest,response: T.Type, with path: AktuelAPICall, completion: @escaping (Result <T, Error>) -> Void)
 }
+
 final class WebService: WebserviceProtocol {
-    func fetch<T>(response: T.Type, with path: AktuelAPICall, completion: @escaping (Result<T, Error>) -> Void) where T : Decodable, T : Encodable {
+    
+    func fetch<T: Codable>(request: BaseRequest, response: T.Type, with path: AktuelAPICall, completion: @escaping (Result<T, Error>) -> Void) {
         let urlRequest = URLRequest(url: path.url)
         let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             if let error = error {
@@ -18,7 +19,6 @@ final class WebService: WebserviceProtocol {
                 return
             }
             guard let data = data else {
-                completion(.failure(NetworkError.dataNotFound))
                 return
             }
             let decoder = JSONDecoder()
@@ -32,23 +32,11 @@ final class WebService: WebserviceProtocol {
         task.resume()
     }
 }
-protocol WebserviceAdapterProtocol {
-    func getProducts(completion: @escaping (Result<Aktuel, Error>) -> Void)
-}
-final class WebserviceAdapter: WebserviceAdapterProtocol {
-   
-    private let webservice: WebserviceProtocol
-    
-    init(webservice: WebserviceProtocol) {
-        self.webservice = webservice
-    }
 
-    func getProducts(completion: @escaping (Result<Aktuel, Error>) -> Void) {
-        func getProduct(completion: @escaping (Result <Aktuel, Error>) -> Void) {
-            webservice.fetch(response: Aktuel.self, with: .getAktuel, completion: completion)
-        }
-    }
+class BaseRequest {
+    init() {}
 }
-enum NetworkError: Error{
-    case dataNotFound
+
+class UserRequest: BaseRequest {
+    var path : String = "/users/me"
 }
