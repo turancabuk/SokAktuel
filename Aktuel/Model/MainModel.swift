@@ -14,32 +14,6 @@ struct Aktuel: Codable {
     let pagination: Pagination?
     let filters: Filters?
     let head: Head?
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(self.meta, forKey: .meta)
-        try container.encodeIfPresent(self.payload, forKey: .payload)
-        try container.encodeIfPresent(self.pagination, forKey: .pagination)
-        try container.encodeIfPresent(self.filters, forKey: .filters)
-        try container.encodeIfPresent(self.head, forKey: .head)
-    }
-    
-    enum CodingKeys: CodingKey {
-        case meta
-        case payload
-        case pagination
-        case filters
-        case head
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.meta = try container.decodeIfPresent(Meta.self, forKey: .meta)
-        self.payload = try container.decodeIfPresent(Payload.self, forKey: .payload)
-        self.pagination = try container.decodeIfPresent(Pagination.self, forKey: .pagination)
-        self.filters = try container.decodeIfPresent(Filters.self, forKey: .filters)
-        self.head = try container.decodeIfPresent(Head.self, forKey: .head)
-    }
 }
 
 // MARK: - Filters
@@ -49,8 +23,8 @@ struct Filters: Codable {
 
     enum CodingKeys: String, CodingKey {
         case order, brand
-        case minPrice = "min_price"
-        case maxPrice = "max_price"
+        case minPrice
+        case maxPrice
     }
 }
 
@@ -60,7 +34,7 @@ struct Head: Codable {
 
     enum CodingKeys: String, CodingKey {
         case title
-        case headDescription = "description"
+        case headDescription
         case image, slug
     }
 }
@@ -82,7 +56,7 @@ struct Pagination: Codable {
 
     enum CodingKeys: String, CodingKey {
         case schema, page
-        case pageCount = "page_count"
+        case pageCount
         case limit, total
     }
 }
@@ -111,10 +85,10 @@ struct Product: Codable {
     let productDescription: String?
     let addBasketOption, addBasketSize, addBasketStatus: Int?
     let brand: String?
-    let madein: Madein?
+    let madein: String?
     let id, serialID: Int?
     let serialTitle: SerialTitle?
-    let price: Price?
+    let price: Price
     let slug: String?
     let vatRatio: String?
     let slogan: String?
@@ -138,7 +112,7 @@ struct Product: Codable {
     let isDiscounted, isStoreRequired, hasMultipleUnits: Bool?
     let productName: String?
     let cargoPrice, oldPrice: Price?
-    let categoryBreadcrumb: String?
+    let category_breadcrumb: String?
     let isInFavorite: Bool?
     let favoriteItemID: Int?
     let isInWishlist: Bool?
@@ -150,54 +124,54 @@ struct Product: Codable {
 
     enum CodingKeys: String, CodingKey {
         case rank
-        case listView = "list_view"
+        case listView
         case categoryid
-        case productDescription = "description"
-        case addBasketOption = "add_basket_option"
-        case addBasketSize = "add_basket_size"
-        case addBasketStatus = "add_basket_status"
+        case productDescription
+        case addBasketOption
+        case addBasketSize
+        case addBasketStatus
         case brand, madein, id
-        case serialID = "serial_id"
-        case serialTitle = "serial_title"
+        case serialID
+        case serialTitle
         case price, slug
-        case vatRatio = "vat_ratio"
+        case vatRatio
         case slogan
-        case basketUpdateDisable = "basket_update_disable"
-        case visitCount = "visit_count"
-        case giftStatus = "gift_status"
-        case productCode = "product_code"
-        case giftPackStatus = "gift_pack_status"
+        case basketUpdateDisable
+        case visitCount
+        case giftStatus
+        case productCode
+        case giftPackStatus
         case exclusive, information
-        case createdAt = "created_at"
-        case orderAddBasketStatus = "order_add_basket_status"
-        case addBasketDefaultOption = "add_basket_default_option"
-        case basketIncreaseSize = "basket_increase_size"
-        case productGroupIdentity = "product_group_identity"
-        case productSerialIdentity = "product_serial_identity"
-        case minBasketAddAmount = "min_basket_add_amount"
-        case maxBasketAddAmount = "max_basket_add_amount"
+        case createdAt
+        case orderAddBasketStatus
+        case addBasketDefaultOption
+        case basketIncreaseSize
+        case productGroupIdentity
+        case productSerialIdentity
+        case minBasketAddAmount
+        case maxBasketAddAmount
         case barcode
-        case kindName = "kind_name"
+        case kindName
         case quantity
-        case cargoDay = "cargo_day"
-        case installmentStatus = "installment_status"
-        case installmentDescriptionMobile = "installment_description_mobile"
-        case fixStatus = "fix_status"
+        case cargoDay
+        case installmentStatus
+        case installmentDescriptionMobile
+        case fixStatus
         case title
-        case discountRatio = "discount_ratio"
-        case isDiscounted = "is_discounted"
-        case isStoreRequired = "is_store_required"
-        case hasMultipleUnits = "has_multiple_units"
-        case productName = "product_name"
-        case cargoPrice = "cargo_price"
-        case oldPrice = "old_price"
-        case categoryBreadcrumb = "category_breadcrumb"
-        case isInFavorite = "is_in_favorite"
-        case favoriteItemID = "favorite_item_id"
-        case isInWishlist = "is_in_wishlist"
-        case basketQuantity = "basket_quantity"
+        case discountRatio
+        case isDiscounted
+        case isStoreRequired
+        case hasMultipleUnits
+        case productName
+        case cargoPrice
+        case oldPrice
+        case category_breadcrumb
+        case isInFavorite
+        case favoriteItemID
+        case isInWishlist
+        case basketQuantity
         case images
-        case imageTypes = "image_types"
+        case imageTypes
         case units, campaign
     }
 }
@@ -207,20 +181,20 @@ struct Campaign: Codable {
     let id: Int?
     let name, campaignDescription, discountAmount, discountPercent: String?
     let typeID: Int?
-    let typeName: String?
+    let typeName: TypeName?
     let relationid: Int?
     let price: Price?
     let conditionText: JSONNull?
 
     enum CodingKeys: String, CodingKey {
         case id, name
-        case campaignDescription = "description"
-        case discountAmount = "discount_amount"
-        case discountPercent = "discount_percent"
-        case typeID = "type_id"
-        case typeName = "type_name"
+        case campaignDescription
+        case discountAmount
+        case discountPercent
+        case typeID
+        case typeName
         case relationid, price
-        case conditionText = "condition_text"
+        case conditionText
     }
 }
 
@@ -237,15 +211,15 @@ struct Price: Codable {
 
     enum CodingKeys: String, CodingKey {
         case original
-        case originalStr = "original_str"
+        case originalStr
         case whole
-        case wholeStr = "whole_str"
+        case wholeStr
         case fraction
-        case fractionStr = "fraction_str"
+        case fractionStr
         case currency
-        case currencySymbol = "currency_symbol"
-        case decimalSeperator = "decimal_seperator"
-        case thousandsSeparator = "thousands_separator"
+        case currencySymbol
+        case decimalSeperator
+        case thousandsSeparator
     }
 }
 
@@ -265,6 +239,10 @@ enum ThousandsSeparator: String, Codable {
     case empty = "."
 }
 
+enum TypeName: String, Codable {
+    case the25TLÜzeriIndirimli = "25 TL üzeri indirimli"
+}
+
 // MARK: - ImageTypes
 struct ImageTypes: Codable {
     let mini, thumbnail, original: String?
@@ -280,21 +258,13 @@ struct Image: Codable {
 
     enum CodingKeys: String, CodingKey {
         case id, productid
-        case productSerialid = "product_serialid"
+        case productSerialid
         case url, type, title, order
     }
 }
 
 enum ListView: String, Codable {
     case productFilter = "product_filter"
-}
-
-enum Madein: String, Codable {
-    case empty = ""
-    case fransa = "FRANSA"
-    case i̇spanya = "İSPANYA"
-    case türki̇ye = "TÜRKİYE"
-    case çi̇n = "ÇİN"
 }
 
 enum SerialTitle: String, Codable {
@@ -310,11 +280,11 @@ struct Units: Codable {
 
     enum CodingKeys: String, CodingKey {
         case title
-        case isInBasket = "is_in_basket"
-        case isDefault = "is_default"
-        case availableQuantity = "available_quantity"
-        case basketQuantity = "basket_quantity"
-        case basketPrice = "basket_price"
+        case isInBasket
+        case isDefault
+        case availableQuantity
+        case basketQuantity
+        case basketPrice
     }
 }
 
@@ -563,12 +533,3 @@ class JSONAny: Codable {
         }
     }
 }
-
-
-
-
-
-
-
-
-

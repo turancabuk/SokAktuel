@@ -30,7 +30,7 @@ class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: UITableViewDataSource {
+extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.productList.count ?? 5
@@ -39,11 +39,9 @@ extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: ProductListCellViewController = (tableView.dequeueReusableCell(withIdentifier: "Cell") as? ProductListCellViewController)!
         let article = viewModel?.productList[indexPath.row]
-        cell.configCells(model: article)
+        cell.configCells(model: article!)
         return cell
     }
 }
 
-extension MainViewController: UITableViewDelegate {
-    
-}
+// [[UIView, new] autorelease];
