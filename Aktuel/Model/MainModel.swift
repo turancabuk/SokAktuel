@@ -112,7 +112,7 @@ struct Product: Codable {
     let isDiscounted, isStoreRequired, hasMultipleUnits: Bool?
     let productName: String?
     let cargoPrice, oldPrice: Price?
-    let category_breadcrumb: String?
+    let category_breadcrumb: String
     let isInFavorite: Bool?
     let favoriteItemID: Int?
     let isInWishlist: Bool?
