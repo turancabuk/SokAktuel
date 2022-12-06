@@ -98,7 +98,7 @@ struct Product: Codable {
     let giftPackStatus: Int?
     let exclusive: Bool?
     let information: String?
-    let createdAt: String?
+    let created_at: String?
     let orderAddBasketStatus, addBasketDefaultOption: Int?
     let basketIncreaseSize: String?
     let productGroupIdentity, productSerialIdentity: JSONNull?
@@ -142,7 +142,7 @@ struct Product: Codable {
         case productCode
         case giftPackStatus
         case exclusive, information
-        case createdAt
+        case created_at
         case orderAddBasketStatus
         case addBasketDefaultOption
         case basketIncreaseSize

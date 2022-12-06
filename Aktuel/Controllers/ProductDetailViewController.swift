@@ -18,6 +18,7 @@ class ProductDetailViewController: UIViewController {
     @IBOutlet weak var brandLabel: UILabel!
     @IBOutlet weak var madeInLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var madeAtLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,7 @@ class ProductDetailViewController: UIViewController {
         brandLabel.text = selectedProduct?.brand
         madeInLabel.text = selectedProduct?.madein
         priceLabel.text = "\(selectedProduct?.price.original ?? 0)TL"
+        madeAtLabel.text = selectedProduct?.created_at
         let baseUrl = "https://cdnd-tr.ceptesok.com//product//1000x1000//"
         let url = URL(string: "\(baseUrl)\(selectedProduct.images?.first?.url ?? "")")
         self.imageView.kf.setImage(with: url)

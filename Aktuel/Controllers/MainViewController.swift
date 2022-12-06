@@ -20,15 +20,23 @@ class MainViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-//        collectionView.delegate = self
-//        collectionView.dataSource = self
-//    
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        let layout  = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: 100, height: 200)
+        collectionView.collectionViewLayout = layout
+
+        //collectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: ProductCollectionViewCell.identifier)
+        let nib = UINib(nibName: "ProductCollectionViewCell", bundle: nil)
+            collectionView?.register(nib, forCellWithReuseIdentifier: "ProductCollectionViewCell")
         viewModel = MainViewModel()
         
         guard let viewModel = viewModel else {return}
         viewModel.getProducts(completion: {result in
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                self.collectionView.reloadData()
             }
         })
     }
@@ -57,31 +65,29 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
 }
-//extension MainViewController {
-//    private func configCollectionView() {
-//        let nib = UINib(nibName: "CollectionViewCell", bundle: nil)
-//        collectionView.register(nib, forCellWithReuseIdentifier: "CollectionViewCell")
-//        collectionView.showsHorizontalScrollIndicator = false
-//        collectionView.layer.borderWidth = 2
-//        collectionView.layer.borderColor = UIColor.lightGray.cgColor
-//        collectionView.reloadData()
-//
-//    }
-//}
-//extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-//
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return viewModel?.productList.category_breadcrumb
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
-//        if let safeWeatherModel = weatherModel {
-//            cell.config(with: safeWeatherModel.hourly[indexPath.row])
-//        }
-//        return cell
-//    }
-//}
-//
-//
+
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel?.productList.count ?? 0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCollectionViewCell", for: indexPath) as? ProductCollectionViewCell else { return UICollectionViewCell() }
+        if let item = viewModel?.productList[indexPath.row] {
+            cell.configCollectionView(with: item)
+        }
+        return cell
+    }
+    
+}
+
+extension MainViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+            sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSize(width: 100,
+                      height: collectionView.frame.size.height)
+        }
+}
+
 
