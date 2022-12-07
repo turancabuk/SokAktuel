@@ -11,12 +11,13 @@ class ProductCollectionViewCell: UICollectionViewCell {
 
     
     static let identifier = String(describing: ProductCollectionViewCell.self)
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var categoryLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        categoryLabel.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.thin)
+        categoryLabel.font = UIFont.systemFont(ofSize: 11, weight: UIFont.Weight.light)
 
     }
 

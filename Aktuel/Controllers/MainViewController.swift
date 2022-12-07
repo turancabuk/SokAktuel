@@ -8,7 +8,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-   
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -22,14 +22,14 @@ class MainViewController: UIViewController {
         tableView.dataSource = self
         collectionView.delegate = self
         collectionView.dataSource = self
+        
         let layout  = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: 100, height: 200)
         collectionView.collectionViewLayout = layout
-
-        //collectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: ProductCollectionViewCell.identifier)
+        
         let nib = UINib(nibName: "ProductCollectionViewCell", bundle: nil)
-            collectionView?.register(nib, forCellWithReuseIdentifier: "ProductCollectionViewCell")
+        collectionView?.register(nib, forCellWithReuseIdentifier: "ProductCollectionViewCell")
         viewModel = MainViewModel()
         
         guard let viewModel = viewModel else {return}
@@ -67,11 +67,11 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.productList.count ?? 0
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCollectionViewCell", for: indexPath) as? ProductCollectionViewCell else { return UICollectionViewCell() }
         if let item = viewModel?.productList[indexPath.row] {
@@ -84,10 +84,10 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-            sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+                        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSize(width: 100,
                       height: collectionView.frame.size.height)
-        }
+    }
 }
 
 
