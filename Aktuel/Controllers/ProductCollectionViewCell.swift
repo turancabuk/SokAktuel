@@ -21,13 +21,8 @@ class ProductCollectionViewCell: UICollectionViewCell {
 
     }
 
-    func configCollectionView(with model: Product ) {
-        
-        let baseUrl = "https://cdnd-tr.ceptesok.com//product//100x100//"
-        if let url = URL(string: "\(baseUrl)\(model.images?.first?.url ?? "")") {
-            imageView.kf.setImage(with: url)
-        }
-        categoryLabel.text = model.title
+    func configCollectionView(with model: String) {
+        categoryLabel.text = model
     }
 
 }

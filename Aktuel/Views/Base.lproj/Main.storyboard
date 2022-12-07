@@ -138,7 +138,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="KY8-PX-HHa" id="pee-un-iWU"/>
+                        <outlet property="categoriesCollectionView" destination="KY8-PX-HHa" id="pee-un-iWU"/>
                         <outlet property="tableView" destination="pcQ-8M-a96" id="Hug-yJ-pY4"/>
                         <segue destination="waN-Pn-P9f" kind="show" identifier="toDetailsVC" id="cMP-Ew-fNj"/>
                     </connections>
