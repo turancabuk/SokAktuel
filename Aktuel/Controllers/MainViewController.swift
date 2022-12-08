@@ -63,16 +63,21 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         chosenProduct = viewModel?.productList[indexPath.row]
-        performSegue(withIdentifier: "toDetailsVC", sender: indexPath)
-    }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let navigationController = UINavigationController()
+        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toDetailsVC") as? ProductDetailViewController {
+                   navigationController.pushViewController(viewController, animated: true)
+           }
         
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toDetailsVC" {
-            let destination = segue.destination as! ProductDetailViewController
-            destination.selectedProduct = chosenProduct
-            
-        }
     }
+//
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "toDetailsVC" {
+//            let destination = segue.destination as! ProductDetailViewController
+//            destination.selectedProduct = chosenProduct
+//
+//        }
+//    }
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
