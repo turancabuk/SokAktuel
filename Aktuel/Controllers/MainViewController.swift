@@ -9,18 +9,15 @@ import UIKit
 class MainViewController: UIViewController {
     
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var productTableView: UITableView!
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
-    private var categories = ["Categori 1"]
     
     var viewModel: MainViewModel?
-    var chosenProduct: Product?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        setupTableView()
         setupCollectionView()
         
         viewModel = MainViewModel()
@@ -28,21 +25,25 @@ class MainViewController: UIViewController {
         guard let viewModel = viewModel else {return}
         viewModel.getProducts(completion: { result in
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self.productTableView.reloadData()
                 self.categoriesCollectionView.reloadData()
             }
         })
+    }
+    
+    private func setupTableView() {
+        productTableView.delegate = self
+        productTableView.dataSource = self
     }
     
     private func setupCollectionView() {
         categoriesCollectionView.delegate = self
         categoriesCollectionView.dataSource = self
         
-        
-        let layout  = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 100, height: 200)
-        categoriesCollectionView.collectionViewLayout = layout
+        let collectionViewLayout  = UICollectionViewFlowLayout()
+        collectionViewLayout.scrollDirection = .horizontal
+        collectionViewLayout.itemSize = CGSize(width: 100, height: 200)
+        categoriesCollectionView.collectionViewLayout = collectionViewLayout
         
         let nib = UINib(nibName: "ProductCollectionViewCell", bundle: nil)
         categoriesCollectionView?.register(nib, forCellWithReuseIdentifier: "ProductCollectionViewCell")
@@ -55,29 +56,20 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: ProductListCellViewController = (tableView.dequeueReusableCell(withIdentifier: "Cell") as? ProductListCellViewController)!
+        let tableViewCell: ProductListCellViewController = (tableView.dequeueReusableCell(withIdentifier: "Cell") as? ProductListCellViewController)!
         let article = viewModel?.productList[indexPath.row]
-        cell.configCells(model: article!)
-        return cell
+        tableViewCell.configCells(model: article!)
+        return tableViewCell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        chosenProduct = viewModel?.productList[indexPath.row]
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let navigationController = UINavigationController()
-        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "toDetailsVC") as? ProductDetailViewController {
-                   navigationController.pushViewController(viewController, animated: true)
-           }
-        
+        if let chosenProduct = viewModel?.productList[indexPath.row] {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "ProductDetailViewController") as! ProductDetailViewController
+            vc.viewModel = ProductDetailViewModel(selectedProduct: chosenProduct)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "toDetailsVC" {
-//            let destination = segue.destination as! ProductDetailViewController
-//            destination.selectedProduct = chosenProduct
-//
-//        }
-//    }
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {

@@ -8,9 +8,17 @@
 import UIKit
 import Kingfisher
 
+class ProductDetailViewModel {
+    var selectedProduct: Product!
+    
+    init(selectedProduct: Product) {
+        self.selectedProduct = selectedProduct
+    }
+}
+
 class ProductDetailViewController: UIViewController {
     
-    var selectedProduct: Product!
+    var viewModel: ProductDetailViewModel?
     
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -23,16 +31,16 @@ class ProductDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleLabel.text = selectedProduct?.title
-        productName.text = selectedProduct?.category_breadcrumb
-        brandLabel.text = selectedProduct?.brand
-        madeInLabel.text = selectedProduct?.madein
-        priceLabel.text = "\(selectedProduct?.price.original ?? 0)TL"
-        madeAtLabel.text = selectedProduct?.created_at
+        
+        titleLabel.text = viewModel?.selectedProduct.title
+        productName.text = viewModel?.selectedProduct.category_breadcrumb
+        brandLabel.text = viewModel?.selectedProduct.brand
+        madeInLabel.text = viewModel?.selectedProduct.madein
+        priceLabel.text = "\(viewModel?.selectedProduct.price.original ?? 0)TL"
+        madeAtLabel.text = viewModel?.selectedProduct.created_at
         let baseUrl = "https://cdnd-tr.ceptesok.com//product//1000x1000//"
-        let url = URL(string: "\(baseUrl)\(selectedProduct.images?.first?.url ?? "")")
-        self.imageView.kf.setImage(with: url)
-
-
+        if let url = URL(string: "\(baseUrl)\(viewModel?.selectedProduct.images?.first?.url ?? "")") {
+            self.imageView.kf.setImage(with: url)
+        }
     }
 }

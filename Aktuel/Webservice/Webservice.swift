@@ -32,11 +32,24 @@ final class WebService: WebserviceProtocol {
         task.resume()
     }
 }
-
+protocol WebServiceAdapterProtocol {
+    func getProducts(completion: @escaping (Result<Product, Error>) -> Void)
+}
+final class WebServiceAdapter: WebServiceAdapterProtocol {
+    
+    let webService: WebserviceProtocol
+    
+    init(webService: WebserviceProtocol) {
+        self.webService = webService
+    }
+    func getProducts(completion: @escaping (Result<Product, Error>) -> Void) {
+        webService.fetch(request: BaseRequest(), response: Product.self, with: .getAktuel, completion: completion)
+    }
+}
 class BaseRequest {
     init() {}
 }
-
 class UserRequest: BaseRequest {
     var path : String = "/users/me"
 }
+
