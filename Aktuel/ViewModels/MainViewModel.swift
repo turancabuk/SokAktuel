@@ -5,25 +5,28 @@
 
 import Foundation
 
+
 final class MainViewModel {
- 
-    var productList = [Product]()
+    
     var categories: [String] = []
+    var productList = [Product]()
+    var productListCount: Int {
+        productList.count
+    }
+    var categoriesListCount: Int {
+        categories.count
+    }
     
     private let webservice: WebserviceProtocol = WebService()
-   
-    func getProducts(completion: @escaping (Result<Aktuel, Error>) -> Void) {
-        
-        let userRequest = UserRequest()
-        
-        webservice.fetch(request: userRequest, response: Aktuel.self, with: .getAktuel, completion: { result in
+    func getProducts(completion: @escaping () -> Void) {
+        webservice.fetch(request: BaseRequest(), response: Aktuel.self, with: .getAktuel, completion: { result in
             switch result {
             case .success(let response):
                 if let products = response.payload?.products {
                     self.productList = products
                     self.categories = Array(Set(products.map {$0.category_breadcrumb}))
                 }
-                completion(result)
+                completion()
             case .failure(let error):
                 print(error)
             }

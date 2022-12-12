@@ -33,7 +33,7 @@ final class WebService: WebserviceProtocol {
     }
 }
 protocol WebServiceAdapterProtocol {
-    func getProducts(completion: @escaping (Result<Product, Error>) -> Void)
+    func getProducts(completion: @escaping (Result<Aktuel, Error>) -> Void)
 }
 final class WebServiceAdapter: WebServiceAdapterProtocol {
     
@@ -42,13 +42,15 @@ final class WebServiceAdapter: WebServiceAdapterProtocol {
     init(webService: WebserviceProtocol) {
         self.webService = webService
     }
-    func getProducts(completion: @escaping (Result<Product, Error>) -> Void) {
-        webService.fetch(request: BaseRequest(), response: Product.self, with: .getAktuel, completion: completion)
+    func getProducts(completion: @escaping (Result<Aktuel, Error>) -> Void) {
+        webService.fetch(request: BaseRequest(), response: Aktuel.self, with: .getAktuel, completion: completion)
     }
 }
+
 class BaseRequest {
     init() {}
 }
+
 class UserRequest: BaseRequest {
     var path : String = "/users/me"
 }

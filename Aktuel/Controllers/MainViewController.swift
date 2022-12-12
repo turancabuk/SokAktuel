@@ -1,18 +1,16 @@
 //
 //  MainViewController.swift
 //  Aktuel
-//
 //  Created by Turan Çabuk on 28.11.2022.
 
 import UIKit
 
 class MainViewController: UIViewController {
     
+    var viewModel: MainViewModel!
     
     @IBOutlet weak var productTableView: UITableView!
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
-    
-    var viewModel: MainViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,43 +20,42 @@ class MainViewController: UIViewController {
         
         viewModel = MainViewModel()
         
-        guard let viewModel = viewModel else {return}
-        viewModel.getProducts(completion: { result in
+        viewModel.getProducts(completion: { [weak self] in
             DispatchQueue.main.async {
-                self.productTableView.reloadData()
-                self.categoriesCollectionView.reloadData()
+                self?.productTableView.reloadData()
+                self?.categoriesCollectionView.reloadData()
             }
         })
-    }
+}
+
+private func setupTableView() {
+    productTableView.delegate = self
+    productTableView.dataSource = self
+}
+
+private func setupCollectionView() {
+    categoriesCollectionView.delegate = self
+    categoriesCollectionView.dataSource = self
     
-    private func setupTableView() {
-        productTableView.delegate = self
-        productTableView.dataSource = self
-    }
+    let collectionViewLayout  = UICollectionViewFlowLayout()
+    collectionViewLayout.scrollDirection = .horizontal
+    collectionViewLayout.itemSize = CGSize(width: 100, height: 200)
+    categoriesCollectionView.collectionViewLayout = collectionViewLayout
     
-    private func setupCollectionView() {
-        categoriesCollectionView.delegate = self
-        categoriesCollectionView.dataSource = self
-        
-        let collectionViewLayout  = UICollectionViewFlowLayout()
-        collectionViewLayout.scrollDirection = .horizontal
-        collectionViewLayout.itemSize = CGSize(width: 100, height: 200)
-        categoriesCollectionView.collectionViewLayout = collectionViewLayout
-        
-        let nib = UINib(nibName: "ProductCollectionViewCell", bundle: nil)
-        categoriesCollectionView?.register(nib, forCellWithReuseIdentifier: "ProductCollectionViewCell")
-    }
+    let nib = UINib(nibName: "ProductCollectionViewCell", bundle: nil)
+    categoriesCollectionView?.register(nib, forCellWithReuseIdentifier: "ProductCollectionViewCell")
+}
 }
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.productList.count ?? 5
+        return viewModel.productListCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let tableViewCell: ProductListCellViewController = (tableView.dequeueReusableCell(withIdentifier: "Cell") as? ProductListCellViewController)!
-        let article = viewModel?.productList[indexPath.row]
-        tableViewCell.configCells(model: article!)
+        let product = viewModel?.productList[indexPath.row]
+        tableViewCell.configCells(model: product!)
         return tableViewCell
     }
     
@@ -74,7 +71,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel?.categories.count ?? 0
+        return viewModel.categoriesListCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -93,5 +90,6 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
                       height: collectionView.frame.size.height)
     }
 }
+
 
 
