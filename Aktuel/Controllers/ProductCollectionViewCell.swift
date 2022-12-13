@@ -23,6 +23,10 @@ class ProductCollectionViewCell: UICollectionViewCell {
 
     func configCollectionView(with model: String) {
         categoryLabel.text = model
+        
+    
+        
+        
     }
 
 }

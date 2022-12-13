@@ -71,12 +71,12 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.categoriesListCount
+        return viewModel.categorryArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCollectionViewCell", for: indexPath) as? ProductCollectionViewCell else { return UICollectionViewCell() }
-        if let item = viewModel?.categories[indexPath.row] {
+        if let item = viewModel?.categorryArray[indexPath.row] {
             cell.configCollectionView(with: item)
         }
         return cell
