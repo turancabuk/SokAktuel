@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import CoreData
 
 class ProductListCellViewController: UITableViewCell {
 
@@ -29,5 +30,26 @@ class ProductListCellViewController: UITableViewCell {
 
 
     }
-
+    
+    @IBAction func addToBasketButtonClicked(_ sender: Any) {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let saveData = NSEntityDescription.insertNewObject(forEntityName: "AddBasket", into: context)
+        
+        saveData.setValue(productTitleLabel.text, forKey: "productTitle")
+        saveData.setValue(productCategoryLabel.text, forKey: "productCategory")
+        saveData.setValue(productImageView.image, forKey: "productImage")
+        if let price = Int(productPriceLabel.text!) {
+            saveData.setValue(price, forKey: "productPrice")
+            
+            do {
+                try context.save()
+                print("succes!")
+            } catch {
+                print("error!")
+            }
+        }
+        print("error!")
+    }
 }

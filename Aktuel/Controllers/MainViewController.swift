@@ -9,6 +9,8 @@ class MainViewController: UIViewController {
     
     var viewModel: MainViewModel!
     
+   
+    @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var productTableView: UITableView!
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     
@@ -49,7 +51,7 @@ private func setupCollectionView() {
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.productListCount
+        return viewModel.productList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -71,12 +73,12 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.categorryArray.count
+        return viewModel.categoryArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCollectionViewCell", for: indexPath) as? ProductCollectionViewCell else { return UICollectionViewCell() }
-        if let item = viewModel?.categorryArray[indexPath.row] {
+        if let item = viewModel?.categoryArray[indexPath.row]  {
             cell.configCollectionView(with: item)
         }
         return cell

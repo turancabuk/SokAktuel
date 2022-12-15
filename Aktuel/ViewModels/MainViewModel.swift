@@ -5,36 +5,31 @@
 
 import Foundation
 
-
 final class MainViewModel {
-    
     var productList = [Product]()
     var categoryList: [String] = []
-    var categorryArray: [String] = []
-    var uniqueArray: [String] = []
-    var categories: [String] = []
+    var categoryArray: [String] = []
+    var uniqeArray: [String] = []
 
-    var productListCount: Int {
-        productList.count
-    }
-//    var categoriesListCount: Int {
-//        categorryArray.count
-//    }
-    private let webservice: WebserviceProtocol = WebService()
+    private let webService: WebserviceProtocol = WebService()
+
     func getProducts(completion: @escaping () -> Void) {
-        webservice.fetch(request: BaseRequest(), response: Aktuel.self, with: .getAktuel, completion: { result in
+        webService.fetch(request: BaseRequest(), response: Aktuel.self, with: .getAktuel, completion: { [self] result in
             switch result {
             case .success(let response):
                 if let products = response.payload?.products {
                     self.productList = products
-                    self.categories = Array(Set(products.map {$0.category_breadcrumb}))
-                    for category in self.categoryList {
-                      let string = category.components(separatedBy: "/")[0]
-                        self.categorryArray.append(string)
-                        let categorySet = Set(self.categorryArray)
+                    self.categoryList = Array(Set(products.map{ $0.category_breadcrumb }))
+                    /// Burada categoryList dizisinin elemanlarının ilk bölümlerini alan bir dizi oluşturdum ve categoryArray dizisine ekledim.
+                    for category in categoryList {
+                        let string = category.components(separatedBy: "/")[0]
+                        categoryArray.append(string)
+                        
+                        let categorySet = Set(categoryArray)
                         let uniqueCategories = Array(categorySet)
-                        self.uniqueArray.append(contentsOf: uniqueCategories)
-                        self.categorryArray = Array(categorySet)
+                        uniqeArray.append(contentsOf: uniqueCategories)
+                        ///categoryArray dizisindeki tekrarlayan elemanlar sildim ve tekrar ürettiğim diziyi, uniqeArray dizisine ekledim.
+                        categoryArray = Array(categorySet)
                     }
                 }
                 completion()
@@ -44,3 +39,35 @@ final class MainViewModel {
         })
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//func getProducts(completion: @escaping () -> Void) {
+
+
+
+
