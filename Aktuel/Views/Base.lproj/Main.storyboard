@@ -13,13 +13,13 @@
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="MainView" id="BYZ-38-t0r" customClass="MainViewController" customModule="Aktuel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Aktuel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" alpha="0.94999999999999996" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Lae-Uu-XS8">
-                                <rect key="frame" x="-5" y="-2" width="403" height="843"/>
+                                <rect key="frame" x="-5" y="-3" width="403" height="843"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="pcQ-8M-a96">
@@ -76,9 +76,6 @@
                                                     <rect key="frame" x="343" y="96" width="27" height="27"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="basket.fill" catalog="system"/>
-                                                    <connections>
-                                                        <action selector="addToBasketButtonClicked:" destination="Nc0-1G-H8p" eventType="touchUpInside" id="fSx-31-MEG"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -103,6 +100,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
+                                            <outlet property="addToBasketButton" destination="ifR-Tk-N4A" id="koC-Nv-B5R"/>
                                             <outlet property="productCategoryLabel" destination="JN3-Qh-4ay" id="wlz-Iz-88u"/>
                                             <outlet property="productImageView" destination="VKD-bw-iTO" id="4eR-Go-gsI"/>
                                             <outlet property="productPriceLabel" destination="K5B-kR-P4g" id="RN1-QZ-Qib"/>
@@ -114,7 +112,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KY8-PX-HHa">
                                 <rect key="frame" x="16" y="302" width="358" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.96841138601303101" green="0.87434467089628132" blue="0.057339778149861867" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Hio-9m-nuv">
                                     <size key="itemSize" width="130" height="130"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -146,9 +144,15 @@
                                 </cells>
                             </collectionView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="sGI-QG-Dya">
-                                <rect key="frame" x="16" y="45" width="358" height="221"/>
+                                <rect key="frame" x="16" y="82" width="358" height="169"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q1S-Qc-nZp">
+                                <rect key="frame" x="326" y="259" width="48" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="list.clipboard.fill" catalog="system"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -276,6 +280,97 @@
             </objects>
             <point key="canvasLocation" x="2382" y="4"/>
         </scene>
+        <!--Basket View Controller-->
+        <scene sceneID="bgr-kW-qHk">
+            <objects>
+                <viewController id="Rch-No-OW1" customClass="BasketViewController" customModule="Aktuel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oag-ZJ-Tuj">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="B7o-lx-nyx">
+                                <rect key="frame" x="0.0" y="-27" width="390" height="871"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="IfC-Mz-GIa">
+                                <rect key="frame" x="16" y="47" width="358" height="221"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="US0-82-czn">
+                                <rect key="frame" x="16" y="276" width="358" height="534"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="146" id="s2g-Me-ILs" userLabel="BasketViewCell" customClass="BasketTableViewCell" customModule="Aktuel" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="358" height="146"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s2g-Me-ILs" id="dtv-sl-sUB">
+                                            <rect key="frame" x="0.0" y="0.0" width="358" height="146"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdD-Vr-CDf">
+                                                    <rect key="frame" x="0.0" y="11" width="350" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cIA-NN-MMz">
+                                                    <rect key="frame" x="0.0" y="43" width="172" height="80"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9Y-06-Uo5">
+                                                    <rect key="frame" x="180" y="43" width="170" height="45"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfg-TG-7eX">
+                                                    <rect key="frame" x="180" y="96" width="135" height="27"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" systemColor="linkColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edN-IL-XB6">
+                                                    <rect key="frame" x="323" y="96" width="27" height="27"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="basket" catalog="system"/>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="basketCategoryLabel" destination="f9Y-06-Uo5" id="1gT-BJ-X0C"/>
+                                            <outlet property="basketImageView" destination="cIA-NN-MMz" id="veZ-sn-tNU"/>
+                                            <outlet property="basketPriceLabel" destination="kfg-TG-7eX" id="2o0-WT-FEX"/>
+                                            <outlet property="basketTitleLabel" destination="tdD-Vr-CDf" id="mEh-Se-KAc"/>
+                                            <outlet property="removeToBasketButtonClicked" destination="edN-IL-XB6" id="Qmn-Zl-ecH"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="T07-ge-fxr"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="T07-ge-fxr" firstAttribute="trailing" secondItem="B7o-lx-nyx" secondAttribute="trailing" id="89F-OU-a9z"/>
+                            <constraint firstItem="T07-ge-fxr" firstAttribute="bottom" secondItem="B7o-lx-nyx" secondAttribute="bottom" constant="-34" id="8lP-fb-8eg"/>
+                            <constraint firstItem="B7o-lx-nyx" firstAttribute="top" secondItem="T07-ge-fxr" secondAttribute="top" constant="-74" id="Xww-1h-5UR"/>
+                            <constraint firstItem="B7o-lx-nyx" firstAttribute="leading" secondItem="T07-ge-fxr" secondAttribute="leading" id="cBm-Hi-jot"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="basketTableView" destination="US0-82-czn" id="PBX-HK-WfQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L1a-wO-Vlk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3221.5384615384614" y="3.5545023696682461"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="TbZ-aZ-LNA">
             <objects>
@@ -297,7 +392,9 @@
     </scenes>
     <resources>
         <image name="background" width="932" height="1428"/>
+        <image name="basket" catalog="system" width="128" height="108"/>
         <image name="basket.fill" catalog="system" width="128" height="108"/>
+        <image name="list.clipboard.fill" catalog="system" width="103" height="128"/>
         <image name="logo" width="2560" height="1664"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

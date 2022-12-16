@@ -16,8 +16,8 @@ class ProductListCellViewController: UITableViewCell {
     @IBOutlet weak var productCategoryLabel: UILabel!
     @IBOutlet weak var productPriceLabel: UILabel!
     @IBOutlet weak var productImageView: UIImageView!
-
-
+    @IBOutlet weak var addToBasketButton: UIButton!
+    
     func configCells(model: Product){
 
         self.productTitleLabel.text = model.title
@@ -28,21 +28,24 @@ class ProductListCellViewController: UITableViewCell {
         self.productImageView.kf.setImage(with: url)
         self.productImageView.backgroundColor = UIColor.clear
 
-
     }
     
     @IBAction func addToBasketButtonClicked(_ sender: Any) {
-        
+
+        print("button clicked")
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let saveData = NSEntityDescription.insertNewObject(forEntityName: "AddBasket", into: context)
-        
+
         saveData.setValue(productTitleLabel.text, forKey: "productTitle")
         saveData.setValue(productCategoryLabel.text, forKey: "productCategory")
-        saveData.setValue(productImageView.image, forKey: "productImage")
+        let image = URL(string: "\(String(describing: productImageView.image))")
+        DispatchQueue.main.async {
+            saveData.setValue(image, forKey: "productImage")
+        }
         if let price = Int(productPriceLabel.text!) {
             saveData.setValue(price, forKey: "productPrice")
-            
+
             do {
                 try context.save()
                 print("succes!")
@@ -53,3 +56,14 @@ class ProductListCellViewController: UITableViewCell {
         print("error!")
     }
 }
+
+
+
+
+
+
+
+
+
+
+

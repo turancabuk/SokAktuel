@@ -5,14 +5,20 @@
 
 import UIKit
 
+
 class MainViewController: UIViewController {
     
     var viewModel: MainViewModel!
     
-   
+    
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var productTableView: UITableView!
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
+    
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,25 +34,25 @@ class MainViewController: UIViewController {
                 self?.categoriesCollectionView.reloadData()
             }
         })
-}
-
-private func setupTableView() {
-    productTableView.delegate = self
-    productTableView.dataSource = self
-}
-
-private func setupCollectionView() {
-    categoriesCollectionView.delegate = self
-    categoriesCollectionView.dataSource = self
+    }
     
-    let collectionViewLayout  = UICollectionViewFlowLayout()
-    collectionViewLayout.scrollDirection = .horizontal
-    collectionViewLayout.itemSize = CGSize(width: 100, height: 200)
-    categoriesCollectionView.collectionViewLayout = collectionViewLayout
+    private func setupTableView() {
+        productTableView.delegate = self
+        productTableView.dataSource = self
+    }
     
-    let nib = UINib(nibName: "ProductCollectionViewCell", bundle: nil)
-    categoriesCollectionView?.register(nib, forCellWithReuseIdentifier: "ProductCollectionViewCell")
-}
+    private func setupCollectionView() {
+        categoriesCollectionView.delegate = self
+        categoriesCollectionView.dataSource = self
+        
+        let collectionViewLayout  = UICollectionViewFlowLayout()
+        collectionViewLayout.scrollDirection = .horizontal
+        collectionViewLayout.itemSize = CGSize(width: 100, height: 200)
+        categoriesCollectionView.collectionViewLayout = collectionViewLayout
+        
+        let nib = UINib(nibName: "ProductCollectionViewCell", bundle: nil)
+        categoriesCollectionView?.register(nib, forCellWithReuseIdentifier: "ProductCollectionViewCell")
+    }
 }
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
@@ -58,9 +64,13 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         let tableViewCell: ProductListCellViewController = (tableView.dequeueReusableCell(withIdentifier: "Cell") as? ProductListCellViewController)!
         let product = viewModel?.productList[indexPath.row]
         tableViewCell.configCells(model: product!)
+        let button = tableViewCell.addToBasketButton.addTarget(self, action: #selector(addToBasketButtonTapped(vc:)), for: .touchUpInside)
         return tableViewCell
     }
-    
+
+    @objc func addToBasketButtonTapped(vc: ProductListCellViewController) {
+        let go = vc.addToBasketButtonClicked((Any).self)
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let chosenProduct = viewModel?.productList[indexPath.row] {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -69,6 +79,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
