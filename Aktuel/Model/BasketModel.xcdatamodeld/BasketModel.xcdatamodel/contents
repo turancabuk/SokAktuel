@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G83" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AddBasket" representedClassName="AddBasket" syncable="YES" codeGenerationType="class">
-        <attribute name="productBrand" optional="YES" attributeType="String"/>
         <attribute name="productCategory" optional="YES" attributeType="String"/>
-        <attribute name="productID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="productImage" optional="YES" attributeType="Binary"/>
-        <attribute name="productMadeAt" optional="YES" attributeType="String"/>
-        <attribute name="productMadeIn" optional="YES" attributeType="String"/>
-        <attribute name="productName" optional="YES" attributeType="String"/>
         <attribute name="productPrice" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="productTitle" optional="YES" attributeType="String"/>
     </entity>

@@ -15,11 +15,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var productTableView: UITableView!
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     
-    
-    
-    
-    
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,6 +50,10 @@ class MainViewController: UIViewController {
         let nib = UINib(nibName: "ProductCollectionViewCell", bundle: nil)
         categoriesCollectionView?.register(nib, forCellWithReuseIdentifier: "ProductCollectionViewCell")
     }
+
+    @IBAction func gotoBasket(_ sender: UIButton) {
+
+    }
 }
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
@@ -61,15 +62,11 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tableViewCell: ProductListCellViewController = (tableView.dequeueReusableCell(withIdentifier: "Cell") as? ProductListCellViewController)!
+        let cell: ProductListTableViewCell = (tableView.dequeueReusableCell(withIdentifier: "Cell") as? ProductListTableViewCell)!
         let product = viewModel?.productList[indexPath.row]
-        tableViewCell.configCells(model: product!)
-        let button = tableViewCell.addToBasketButton.addTarget(self, action: #selector(addToBasketButtonTapped(vc:)), for: .touchUpInside)
-        return tableViewCell
-    }
-
-    @objc func addToBasketButtonTapped(vc: ProductListCellViewController) {
-        let go = vc.addToBasketButtonClicked((Any).self)
+        cell.configCells(model: product!)
+        cell.delegate = self
+        return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let chosenProduct = viewModel?.productList[indexPath.row] {
@@ -78,8 +75,14 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
             vc.viewModel = ProductDetailViewModel(selectedProduct: chosenProduct)
             self.navigationController?.pushViewController(vc, animated: true)
         }
-    }
+    }    
     
+}
+
+extension MainViewController: ProductListDelegate {
+    func didSelectProduct() {
+        print("istedigini yazdir")
+    }
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {

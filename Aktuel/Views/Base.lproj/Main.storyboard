@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Lae-Uu-XS8">
-                                <rect key="frame" x="-5" y="-3" width="403" height="843"/>
+                                <rect key="frame" x="-6" y="-4" width="404" height="844"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="pcQ-8M-a96">
@@ -27,7 +27,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="134" id="Nc0-1G-H8p" userLabel="ProductCell" customClass="ProductListCellViewController" customModule="Aktuel" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="134" id="Nc0-1G-H8p" userLabel="ProductCell" customClass="ProductListTableViewCell" customModule="Aktuel" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="390" height="134"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nc0-1G-H8p" id="kGO-Zm-3Vi">
@@ -76,6 +76,9 @@
                                                     <rect key="frame" x="343" y="96" width="27" height="27"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="basket.fill" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="addToBasketButtonClicked:" destination="Nc0-1G-H8p" eventType="touchUpInside" id="C0o-Jd-KW7"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -100,7 +103,6 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outlet property="addToBasketButton" destination="ifR-Tk-N4A" id="koC-Nv-B5R"/>
                                             <outlet property="productCategoryLabel" destination="JN3-Qh-4ay" id="wlz-Iz-88u"/>
                                             <outlet property="productImageView" destination="VKD-bw-iTO" id="4eR-Go-gsI"/>
                                             <outlet property="productPriceLabel" destination="K5B-kR-P4g" id="RN1-QZ-Qib"/>
@@ -152,6 +154,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="list.clipboard.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="goToBasketList:" destination="MR9-AU-j7V" eventType="touchUpInside" id="uhD-DP-DJw"/>
+                                    <action selector="gotoBasket:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o1M-gX-icy"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -165,6 +171,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="MR9-AU-j7V" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1581.5384615384614" y="3.5545023696682461"/>
         </scene>
@@ -283,7 +290,7 @@
         <!--Basket View Controller-->
         <scene sceneID="bgr-kW-qHk">
             <objects>
-                <viewController id="Rch-No-OW1" customClass="BasketViewController" customModule="Aktuel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="basketCell" id="Rch-No-OW1" customClass="BasketViewController" customModule="Aktuel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oag-ZJ-Tuj">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

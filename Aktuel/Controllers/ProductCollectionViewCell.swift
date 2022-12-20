@@ -11,12 +11,10 @@ import UIKit
 
 class ProductCollectionViewCell: UICollectionViewCell {
 
-    
     static let identifier = String(describing: ProductCollectionViewCell.self)
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var categoryLabel: UILabel!
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -58,8 +56,4 @@ class ProductCollectionViewCell: UICollectionViewCell {
             imageView.image = UIImage(named: "sok")
         }
     }
-    
-    
-    
-
 }
