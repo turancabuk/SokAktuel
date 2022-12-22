@@ -36,8 +36,8 @@ class ProductDetailViewController: UIViewController {
         productName.text = viewModel?.selectedProduct.category_breadcrumb
         brandLabel.text = viewModel?.selectedProduct.brand
         madeInLabel.text = viewModel?.selectedProduct.madein
-        priceLabel.text = "\(viewModel?.selectedProduct.price.original ?? 0)TL"
-        madeAtLabel.text = viewModel?.selectedProduct.created_at
+        priceLabel.text = "\((viewModel?.selectedProduct.price?.originalStr)!)TL"
+        madeAtLabel.text = viewModel?.selectedProduct.createdAt
         let baseUrl = "https://cdnd-tr.ceptesok.com//product//1000x1000//"
         if let url = URL(string: "\(baseUrl)\(viewModel?.selectedProduct.images?.first?.url ?? "")") {
             self.imageView.kf.setImage(with: url)

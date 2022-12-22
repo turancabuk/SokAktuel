@@ -14,12 +14,12 @@ final class MainViewModel {
     private let webService: WebserviceProtocol = WebService()
 
     func getProducts(completion: @escaping () -> Void) {
-        webService.fetch(request: BaseRequest(), response: Aktuel.self, with: .getAktuel, completion: { [self] result in
+        webService.fetch(response: Aktuel.self, with: .getAktuel, completion: { [self] result in
             switch result {
             case .success(let response):
                 if let products = response.payload?.products {
                     self.productList = products
-                    self.categoryList = Array(Set(products.map{ $0.category_breadcrumb }))
+                    self.categoryList = Array(Set(products.map{ $0.category_breadcrumb! }))
                     /// Burada categoryList dizisinin elemanlarının ilk bölümlerini alan bir dizi oluşturdum ve categoryArray dizisine ekledim.
                     for category in categoryList {
                         let string = category.components(separatedBy: "/")[0]
@@ -34,39 +34,12 @@ final class MainViewModel {
                 }
                 completion()
             case .failure(let error):
-                print(error)
+                print("bu hatanın sebebi: \(error.localizedDescription)")
             }
         })
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//func getProducts(completion: @escaping () -> Void) {
 
 
 

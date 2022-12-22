@@ -52,6 +52,14 @@ class ProductCollectionViewCell: UICollectionViewCell {
             imageView.image = UIImage(named: "giyimayakkabi")
         case "İçecek":
             imageView.image = UIImage(named: "icecek")
+        case "Dondurulmuş Ürünler":
+            imageView.image = UIImage(named: "dondurulmus")
+        case "Meyve & Sebze":
+            imageView.image = UIImage(named: "meyvesebze")
+        case "Çiçek":
+            imageView.image = UIImage(named: "cicek")
+        case "Et & Tavuk & Şarküteri":
+            imageView.image = UIImage(named: "ettavuksarkuteri")
         default:
             imageView.image = UIImage(named: "sok")
         }
