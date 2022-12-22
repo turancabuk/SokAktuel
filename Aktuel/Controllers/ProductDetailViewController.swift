@@ -33,7 +33,7 @@ class ProductDetailViewController: UIViewController {
         
         
         titleLabel.text = viewModel?.selectedProduct.title
-        productName.text = viewModel?.selectedProduct.category_breadcrumb
+        productName.text = viewModel?.selectedProduct.categoryBreadcrumb
         brandLabel.text = viewModel?.selectedProduct.brand
         madeInLabel.text = viewModel?.selectedProduct.madein
         priceLabel.text = "\((viewModel?.selectedProduct.price?.originalStr)!)TL"

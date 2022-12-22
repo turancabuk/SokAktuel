@@ -26,7 +26,7 @@ class ProductListTableViewCell: UITableViewCell {
     func configCells(model: Product){
         self.productTitleLabel.text = model.title
         self.productPriceLabel.text = "\(model.price?.original ?? 0)₺"
-        self.productCategoryLabel.text = model.category_breadcrumb
+        self.productCategoryLabel.text = model.categoryBreadcrumb
         let baseUrl = "https://cdnd-tr.ceptesok.com//product//420x420//"
         let url = URL(string: "\(baseUrl)\(model.images?.first?.url ?? "")")
         self.productImageView.kf.setImage(with: url)

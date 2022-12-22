@@ -19,7 +19,7 @@ final class MainViewModel {
             case .success(let response):
                 if let products = response.payload?.products {
                     self.productList = products
-                    self.categoryList = Array(Set(products.map{ $0.category_breadcrumb! }))
+                    self.categoryList = Array(Set(products.map{ $0.categoryBreadcrumb! }))
                     /// Burada categoryList dizisinin elemanlarının ilk bölümlerini alan bir dizi oluşturdum ve categoryArray dizisine ekledim.
                     for category in categoryList {
                         let string = category.components(separatedBy: "/")[0]

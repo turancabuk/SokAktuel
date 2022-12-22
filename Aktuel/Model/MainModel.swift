@@ -4,7 +4,6 @@
 //
 //  Created by Turan Çabuk on 28.11.2022.
 
-import Foundation
 
 // MARK: - Aktuel
 struct Aktuel: Codable {
@@ -109,11 +108,11 @@ struct Product: Codable {
     let installmentDescriptionMobile: String?
     let fixStatus: Int?
     let title: String?
-    let discountRatio: Int?
+    let discountRatio: Double?
     let isDiscounted, isStoreRequired, hasMultipleUnits: Bool?
     let productName: String?
     let cargoPrice, oldPrice: Price?
-    let category_breadcrumb: String?
+    let categoryBreadcrumb: String?
     let isInFavorite: Bool?
     let favoriteItemID: Int?
     let isInWishlist: Bool?
@@ -166,7 +165,7 @@ struct Product: Codable {
         case productName = "product_name"
         case cargoPrice = "cargo_price"
         case oldPrice = "old_price"
-        case category_breadcrumb = "category_breadcrumb"
+        case categoryBreadcrumb = "category_breadcrumb"
         case isInFavorite = "is_in_favorite"
         case favoriteItemID = "favorite_item_id"
         case isInWishlist = "is_in_wishlist"
