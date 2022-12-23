@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5C0192352944CD30003297A7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0192342944CD30003297A7 /* Extensions.swift */; };
+		5C0CEB3E2954FC4200C7FBB0 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0CEB3D2954FC4200C7FBB0 /* Builder.swift */; };
 		5C190DDC294B946000080F91 /* BasketModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C190DDA294B946000080F91 /* BasketModel.xcdatamodeld */; };
 		5C190E01294BB84600080F91 /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C190E00294BB84600080F91 /* BasketViewController.swift */; };
 		5C190E07294BBA8800080F91 /* BasketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C190E06294BBA8800080F91 /* BasketTableViewCell.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		5C0192342944CD30003297A7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		5C0CEB3D2954FC4200C7FBB0 /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
 		5C190DDB294B946000080F91 /* BasketModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BasketModel.xcdatamodel; sourceTree = "<group>"; };
 		5C190E00294BB84600080F91 /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
 		5C190E06294BBA8800080F91 /* BasketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketTableViewCell.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				5C0192342944CD30003297A7 /* Extensions.swift */,
+				5C0CEB3D2954FC4200C7FBB0 /* Builder.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				5C190E07294BBA8800080F91 /* BasketTableViewCell.swift in Sources */,
 				5C984D9429351D8E000BB027 /* MainModel.swift in Sources */,
 				5C984D8329351D62000BB027 /* MainViewController.swift in Sources */,
+				5C0CEB3E2954FC4200C7FBB0 /* Builder.swift in Sources */,
 				5C984DAA2936B06F000BB027 /* ModelData.swift in Sources */,
 				5C984DA62936A720000BB027 /* ProductListTableViewCell.swift in Sources */,
 				5C984D9F29352CBE000BB027 /* Webservice.swift in Sources */,
