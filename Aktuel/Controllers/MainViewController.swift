@@ -65,7 +65,6 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         let cell: ProductListTableViewCell = (tableView.dequeueReusableCell(withIdentifier: "Cell") as? ProductListTableViewCell)!
         let product = viewModel?.productList[indexPath.row]
         cell.configCells(model: product!)
-        cell.delegate = self
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -76,15 +75,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }    
-    
 }
-
-extension MainViewController: ProductListDelegate {
-    func didSelectProduct() {
-        print("istedigini yazdir")
-    }
-}
-
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.categoryArray.count

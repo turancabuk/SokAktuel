@@ -15,4 +15,9 @@ class BasketTableViewCell: UITableViewCell {
     @IBOutlet weak var basketPriceLabel: UILabel!
     @IBOutlet weak var removeToBasketButtonClicked: UIButton!
     
+    func configCells(model: BasketViewModel){
+       
+        let item = model.productList[0]
+        self.basketTitleLabel.text = item.value(forKey: "productTitle") as! String
+    }
 }

@@ -37,30 +37,29 @@ class ProductListTableViewCell: UITableViewCell {
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let saveData = NSEntityDescription.insertNewObject(forEntityName: "AddBasket", into: context)
-        
-        saveData.setValue(productTitleLabel.text, forKey: "productTitle")
-        saveData.setValue(productCategoryLabel.text, forKey: "productCategory")
-
-        let data = productImageView.image!.jpegData(compressionQuality: 0.5)
-        saveData.setValue(data, forKey: "productImage")
-
-
-
-        let price = Int(productPriceLabel.text ?? "0")
-        saveData.setValue(price, forKey: "productPrice")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AddBasket")
+        fetchRequest.predicate = NSPredicate(format: "productTitle == %@", productTitleLabel.text!)
 
         do {
-            try context.save()
-            print("success!")
+            let result = try context.fetch(fetchRequest)
+            if result.count > 0 {
+                print("Bu ürün zaten sepetinizde mevcut!")
+            } else {
+                let saveData = NSEntityDescription.insertNewObject(forEntityName: "AddBasket", into: context)
+                saveData.setValue(productTitleLabel.text, forKey: "productTitle")
+                saveData.setValue(productCategoryLabel.text, forKey: "productCategory")
+                let data = productImageView.image!.jpegData(compressionQuality: 0.5)
+                saveData.setValue(data, forKey: "productImage")
+                let price = Int(productPriceLabel.text ?? "0")
+                saveData.setValue(price, forKey: "productPrice")
+                try context.save()
+                print("success!")
+            }
+
         } catch {
             print("error!")
         }
-    }
-    
-    @IBAction func goToBasketList(_ sender: Any) {
-        delegate?.didSelectProduct()
-
+        
     }
 }
 
