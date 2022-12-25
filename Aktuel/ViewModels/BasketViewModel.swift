@@ -33,16 +33,10 @@ final class BasketViewModel {
         }
         for products in productList {
             
-            if let title = products.value(forKey: "productTitle") as? String {
-                print(title)
-            }
-            if let price = products.value(forKey: "productPrice") as? Int {
-                print(price)
-            }
-            if let image = products.value(forKey: "productImage") as? Data {
-                print(image)
-            }
-            
+            let title = products.value(forKey: "productTitle") as? String
+            let category = products.value(forKey: "productCategory") as? String
+            let price = products.value(forKey: "productPrice") as? Int
+            let image = products.value(forKey: "productImage") as? Data
         }
     }
     
