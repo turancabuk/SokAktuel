@@ -33,6 +33,7 @@ class ProductDetailViewController: UIViewController {
         
         
         titleLabel.text = viewModel?.selectedProduct.title
+        brandLabel.text = viewModel?.selectedProduct.brand
         productName.text = viewModel?.selectedProduct.categoryBreadcrumb
         brandLabel.text = viewModel?.selectedProduct.brand
         madeInLabel.text = viewModel?.selectedProduct.madein
