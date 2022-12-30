@@ -34,7 +34,7 @@ final class MainViewModel {
                 }
                 completion()
             case .failure(let error):
-                print("bu hatanın sebebi: \(error.localizedDescription)")
+                print("bu hatanın sebebi: \(error)")
             }
         })
     }

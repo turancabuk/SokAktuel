@@ -5,6 +5,8 @@
 //  Created by Turan Çabuk on 28.11.2022.
 
 
+import Foundation
+
 // MARK: - Aktuel
 struct Aktuel: Codable {
     let meta: Meta?
@@ -120,7 +122,7 @@ struct Product: Codable {
     let images: [Image]?
     let imageTypes: ImageTypes?
     let units: Units?
-    let campaign: Campaign?
+    //let campaign: Campaign?
 
     enum CodingKeys: String, CodingKey {
         case rank
@@ -172,7 +174,7 @@ struct Product: Codable {
         case basketQuantity = "basket_quantity"
         case images
         case imageTypes = "image_types"
-        case units, campaign
+        case units//, campaign
     }
 }
 

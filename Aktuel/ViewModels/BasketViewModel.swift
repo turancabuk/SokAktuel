@@ -31,14 +31,8 @@ final class BasketViewModel {
         } catch {
             print ("Error\(error.localizedDescription)")
         }
-        for products in productList {
-            
-            let title = products.value(forKey: "productTitle") as? String
-            let category = products.value(forKey: "productCategory") as? String
-            let price = products.value(forKey: "productPrice") as? Int
-            let image = products.value(forKey: "productImage") as? Data
-        }
     }
+    
     
 }
 struct CartObject: Codable {

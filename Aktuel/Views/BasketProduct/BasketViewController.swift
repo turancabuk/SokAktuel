@@ -22,7 +22,10 @@ class BasketViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         viewModel.getBasket()
-        basketTableView.reloadData()
+        DispatchQueue.main.async {
+            self.basketTableView.reloadData()
+        }
+        
     }
 }
 extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
@@ -31,12 +34,9 @@ extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: BasketTableViewCell = (tableView.dequeueReusableCell(withIdentifier: "basketCell2") as? BasketTableViewCell)!
-        let product = viewModel?.productList[indexPath.row]
-        cell.basketTitleLabel.text = product?.value(forKey: "productTitle") as? String
-        cell.basketCategoryLabel.text = product?.value(forKey: "productCategory") as? String
-        cell.basketPriceLabel.text = "\(product?.value(forKey: "productPrice") as? Int ?? 0) TL"
-        cell.basketImageView.image = UIImage(data: product?.value(forKey: "productImage")as? Data ?? Data())
+        let cell: BasketTableViewCell = tableView.dequeueReusableCell(withIdentifier: "basketCell2") as! BasketTableViewCell
+        let model = (viewModel.productList[indexPath.row])
+        cell.configCell(model: model)
         return cell
     }
 }

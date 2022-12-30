@@ -19,9 +19,7 @@ class ProductListTableViewCell: UITableViewCell {
     @IBOutlet weak var productCategoryLabel: UILabel!
     @IBOutlet weak var productPriceLabel: UILabel!
     @IBOutlet weak var productImageView: UIImageView!
-    @IBOutlet weak var addToBasketButton: UIButton!
 
-    weak var delegate: ProductListDelegate?
     
     func configCells(model: Product){
         self.productTitleLabel.text = model.title
