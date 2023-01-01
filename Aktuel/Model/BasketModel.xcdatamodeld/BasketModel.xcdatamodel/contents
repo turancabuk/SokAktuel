@@ -3,7 +3,7 @@
     <entity name="AddBasket" representedClassName="AddBasket" syncable="YES" codeGenerationType="class">
         <attribute name="productCategory" optional="YES" attributeType="String"/>
         <attribute name="productImage" optional="YES" attributeType="Binary"/>
-        <attribute name="productPrice" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="productPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="productTitle" optional="YES" attributeType="String"/>
     </entity>
 </model>

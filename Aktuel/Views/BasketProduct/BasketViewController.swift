@@ -39,6 +39,22 @@ extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
         cell.configCell(model: model)
         return cell
     }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let product = viewModel?.productList[indexPath.row]
+            context.delete(product!)
+            do {
+                try context.save()
+                viewModel?.productList.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            } catch {
+                print("error! \(error.localizedDescription)")
+            }
+        }
+    }
 }
 
 

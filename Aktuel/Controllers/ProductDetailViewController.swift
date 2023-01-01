@@ -27,7 +27,6 @@ class ProductDetailViewController: UIViewController {
     @IBOutlet weak var madeInLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var madeAtLabel: UILabel!
-    @IBOutlet weak var productIDLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +39,6 @@ class ProductDetailViewController: UIViewController {
         madeInLabel.text = viewModel?.selectedProduct.madein
         priceLabel.text = "\((viewModel?.selectedProduct.price?.originalStr)!)TL"
         madeAtLabel.text = viewModel?.selectedProduct.createdAt
-        productIDLabel.text = "\(String(describing: viewModel?.selectedProduct.id))"
         let baseUrl = "https://cdnd-tr.ceptesok.com//product//1000x1000//"
         if let url = URL(string: "\(baseUrl)\(viewModel?.selectedProduct.images?.first?.url ?? "")") {
             self.imageView.kf.setImage(with: url)
