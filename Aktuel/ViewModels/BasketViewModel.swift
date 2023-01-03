@@ -13,7 +13,7 @@ final class BasketViewModel {
    
     var titleArray = [String]()
     var categorryArray = [String]()
-    var priceArray = [Int]()
+    var priceArray = [Double]()
     var imageArray = [Data]()
     var productList: [NSManagedObject] = []
 
@@ -38,6 +38,6 @@ final class BasketViewModel {
 struct CartObject: Codable {
     let image: Data?
     let title: String
-    let price: Int
+    let price: Double
     let categorry: String
 }

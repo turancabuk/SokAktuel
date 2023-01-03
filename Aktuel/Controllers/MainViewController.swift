@@ -8,22 +8,21 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    var viewModel: MainViewModel!
+    var viewModel: MainViewModel! = MainViewModel()
     
     
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var productTableView: UITableView!
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     
-
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
         setupCollectionView()
         
-        viewModel = MainViewModel()
         
         viewModel.getProducts(completion: { [weak self] in
             DispatchQueue.main.async {
@@ -50,12 +49,7 @@ class MainViewController: UIViewController {
         let nib = UINib(nibName: "ProductCollectionViewCell", bundle: nil)
         categoriesCollectionView?.register(nib, forCellWithReuseIdentifier: "ProductCollectionViewCell")
     }
-
-    @IBAction func gotoBasket(_ sender: UIButton) {
-
-    }
 }
-
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.productList.count
@@ -74,7 +68,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
             vc.viewModel = ProductDetailViewModel(selectedProduct: chosenProduct)
             self.navigationController?.pushViewController(vc, animated: true)
         }
-    }    
+    }
 }
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -89,14 +83,11 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
 }
-
 extension MainViewController: UICollectionViewDelegateFlowLayout {
-    private func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: 100,
-                      height: collectionView.frame.size.height)
+        private func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                            sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+            return CGSize(width: 100,
+                          height: collectionView.frame.size.height)
+        
     }
 }
-
-
-

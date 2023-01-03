@@ -25,7 +25,7 @@ class BasketTableViewCell: UITableViewCell {
             self.basketImageView.image = UIImage(data: imageData as! Data)
         }
         self.basketTitleLabel?.text = model.value(forKey: "productTitle") as? String
-        self.basketPriceLabel.text = "\(model.value(forKey: "productPrice") ?? "0") TL"
         self.basketCategoryLabel.text = model.value(forKey: "productCategory") as? String
-    }
+        self.basketPriceLabel.text = "\(String((model.value(forKey: "productPrice") as? Double) ?? 5))"
+        }
 }

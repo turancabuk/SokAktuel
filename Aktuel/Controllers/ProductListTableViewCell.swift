@@ -23,7 +23,7 @@ class ProductListTableViewCell: UITableViewCell {
     
     func configCells(model: Product){
         self.productTitleLabel.text = model.title
-        self.productPriceLabel.text = "\(model.price?.original ?? 0)₺"
+        self.productPriceLabel.text = "\(model.price!.original ?? 0)₺"
         self.productCategoryLabel.text = model.categoryBreadcrumb
         let baseUrl = "https://cdnd-tr.ceptesok.com//product//420x420//"
         let url = URL(string: "\(baseUrl)\(model.images?.first?.url ?? "")")
@@ -46,9 +46,9 @@ class ProductListTableViewCell: UITableViewCell {
                 let saveData = NSEntityDescription.insertNewObject(forEntityName: "AddBasket", into: context)
                 saveData.setValue(productTitleLabel.text, forKey: "productTitle")
                 saveData.setValue(productCategoryLabel.text, forKey: "productCategory")
-                let data = productImageView.image!.jpegData(compressionQuality: 0.5)
+                let data = productImageView.image?.jpegData(compressionQuality: 0.5)
                 saveData.setValue(data, forKey: "productImage")
-                let price = Int(productPriceLabel.text ?? "0")
+                let price = Double(productPriceLabel.text ?? "0")
                 saveData.setValue(price, forKey: "productPrice")
                 try context.save()
                 print("success!")
