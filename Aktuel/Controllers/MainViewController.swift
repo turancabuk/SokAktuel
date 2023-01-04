@@ -45,16 +45,19 @@ class MainViewController: UIViewController {
         collectionViewLayout.scrollDirection = .horizontal
         collectionViewLayout.itemSize = CGSize(width: 100, height: 200)
         categoriesCollectionView.collectionViewLayout = collectionViewLayout
-        
+
         let nib = UINib(nibName: "ProductCollectionViewCell", bundle: nil)
         categoriesCollectionView?.register(nib, forCellWithReuseIdentifier: "ProductCollectionViewCell")
     }
 }
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.productList.count
+        guard let selectedIndexPath = (categoriesCollectionView.indexPathsForSelectedItems?.first) else { return 0 }
+        if let count = (categoriesCollectionView as UICollectionView).cellForItem(at: selectedIndexPath)?.tag {
+            return count
+        }
+        return 0
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: ProductListTableViewCell = (tableView.dequeueReusableCell(withIdentifier: "Cell") as? ProductListTableViewCell)!
         let product = viewModel?.productList[indexPath.row]
@@ -74,7 +77,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.categoryArray.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCollectionViewCell", for: indexPath) as? ProductCollectionViewCell else { return UICollectionViewCell() }
         if let item = viewModel?.categoryArray[indexPath.row]  {

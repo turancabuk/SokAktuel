@@ -11,19 +11,36 @@ final class MainViewModel {
     var categoryArray: [String] = []
     var uniqeArray: [String] = []
     
-    var kagitUrunleri: [String] = []
-    var kisiselBakimKozmetik: [String] = []
-    var kahvaltilik: [String] = []
-    var dondurulmusUrunler: [String] = []
-    var evYasam: [String] = []
-    var yemeklikMalzemeler: [String] = []
-    var atistirmalik: [String] = []
-    var anneBebekCocuk: [String] = []
-    var giyimAyakkabiAksesuar: [String] = []
-    var temizlik: [String] = []
-    var sutSutUrunleri: [String] = []
-    var icecek: [String] = []
-    var elektronik: [String] = []
+    
+    var paperproducts: [String] = []
+    var PersonalCareCosmeticsProducts: [String] = []
+    var breakfastProducts: [String] = []
+    var frozenproducts: [String] = []
+    var homeLifeProducts: [String] = []
+    var foodMaterialProducts: [String] = []
+    var snackProducts: [String] = []
+    var motherBabyChildProducts: [String] = []
+    var ClothingShoesAccessoryProducts: [String] = []
+    var cleaningProducts: [String] = []
+    var milkProducts: [String] = []
+    var beverageProducts: [String] = []
+    var electronicProducts: [String] = []
+    
+//    var productSections: [Int: [String]] = [:]
+//    productSections[0] = paperproducts
+//    productSections[1] = PersonalCareCosmeticsProducts
+//    productSections[2] = breakfastProducts
+//    productSections[3] = frozenproducts
+//    productSections[4] = homeLifeProducts
+//    productSections[5] = foodMaterialProducts
+//    productSections[6] = snackProducts
+//    productSections[7] = motherBabyChildProducts
+//    productSections[8] = ClothingShoesAccessoryProducts
+//    productSections[9] = cleaningProducts
+//    productSections[10] = milkProducts
+//    productSections[11] = beverageProducts
+//    productSections[12] = electronicProducts
+
     
 
     private let webService: WebserviceProtocol = WebService()
@@ -35,7 +52,7 @@ final class MainViewModel {
                 if let products = response.payload?.products {
                     self.productList = products
                     self.categoryList = Array(Set(products.map{ $0.categoryBreadcrumb! }))
-                    /// Burada categoryList dizisinin elemanlarının ilk bölümlerini alan bir dizi oluşturdum ve categoryArray dizisine ekledim.
+                    /// Here I have created an array that takes the first parts of the elements of the categoryList array and add it to the categoryArray array.
                     for category in categoryList {
                         let string = category.components(separatedBy: "/")[0]
                         categoryArray.append(string)
@@ -43,38 +60,38 @@ final class MainViewModel {
                         let categorySet = Set(categoryArray)
                         let uniqueCategories = Array(categorySet)
                         uniqeArray.append(contentsOf: uniqueCategories)
-                        ///categoryArray dizisindeki tekrarlayan elemanlar sildim ve tekrar ürettiğim diziyi, uniqeArray dizisine ekledim.
+                        ///I deleted the repeating elements in the categoryArray array and added the regenerated array to the uniqeArray array.
                         categoryArray = Array(categorySet)
-                        /// Burada collectionView'da filtreleme yapmak için response'dan dönen farklı kategorileri yukarıdaki ilgili arraylere atayacağım.
+                        /// Here, I will assign the different categories returned from the response to the above related arrays to filter the collectionView.
                         for product in productList {
 
                             switch product.categoryBreadcrumb {
                             case "Yemeklik Malzemeler" :
-                                yemeklikMalzemeler.append(product.productName!)
+                                foodMaterialProducts.append(product.productName!)
                             case "Anne - Bebek & Çocuk":
-                                anneBebekCocuk.append(product.productName!)
+                                motherBabyChildProducts.append(product.productName!)
                             case "Kahvaltılık":
-                                kahvaltilik.append(product.productName!)
+                                breakfastProducts.append(product.productName!)
                             case "Giyim & Ayakkabı & Aksesuar":
-                                giyimAyakkabiAksesuar.append(product.productName!)
+                                ClothingShoesAccessoryProducts.append(product.productName!)
                             case "Kişisel Bakım & Kozmetik":
-                                kisiselBakimKozmetik.append(product.productName!)
+                                PersonalCareCosmeticsProducts.append(product.productName!)
                             case "Ev & Yaşam":
-                                evYasam.append(product.productName!)
+                                homeLifeProducts.append(product.productName!)
                             case "Temizlik":
-                                temizlik.append(product.productName!)
+                                cleaningProducts.append(product.productName!)
                             case "Süt & Süt Ürünleri":
-                                sutSutUrunleri.append(product.productName!)
+                                milkProducts.append(product.productName!)
                             case "Dondurulmuş Ürünler":
-                                dondurulmusUrunler.append(product.productName!)
+                                frozenproducts.append(product.productName!)
                             case "Kağıt Ürünleri":
-                                kagitUrunleri.append(product.productName!)
+                                paperproducts.append(product.productName!)
                             case "Elektronik":
-                                elektronik.append(product.productName!)
+                                electronicProducts.append(product.productName!)
                             case "İçecek":
-                                icecek.append(product.productName!)
+                                beverageProducts.append(product.productName!)
                             case "Atıştırmalık":
-                                atistirmalik.append(product.productName!)
+                                snackProducts.append(product.productName!)
                             default: break
                             }
                         }
