@@ -10,38 +10,38 @@ final class MainViewModel {
     var categoryList: [String] = []
     var categoryArray: [String] = []
     var uniqeArray: [String] = []
+        
+    var paperproducts: [Product] = []
+    var PersonalCareCosmeticsProducts: [Product] = []
+    var breakfastProducts: [Product] = []
+    var frozenproducts: [Product] = []
+    var homeLifeProducts: [Product] = []
+    var foodMaterialProducts: [Product] = []
+    var snackProducts: [Product] = []
+    var motherBabyChildProducts: [Product] = []
+    var ClothingShoesAccessoryProducts: [Product] = []
+    var cleaningProducts: [Product] = []
+    var milkProducts: [Product] = []
+    var beverageProducts: [Product] = []
+    var electronicProducts: [Product] = []
     
-    
-    var paperproducts: [String] = []
-    var PersonalCareCosmeticsProducts: [String] = []
-    var breakfastProducts: [String] = []
-    var frozenproducts: [String] = []
-    var homeLifeProducts: [String] = []
-    var foodMaterialProducts: [String] = []
-    var snackProducts: [String] = []
-    var motherBabyChildProducts: [String] = []
-    var ClothingShoesAccessoryProducts: [String] = []
-    var cleaningProducts: [String] = []
-    var milkProducts: [String] = []
-    var beverageProducts: [String] = []
-    var electronicProducts: [String] = []
-    
-//    var productSections: [Int: [String]] = [:]
-//    productSections[0] = paperproducts
-//    productSections[1] = PersonalCareCosmeticsProducts
-//    productSections[2] = breakfastProducts
-//    productSections[3] = frozenproducts
-//    productSections[4] = homeLifeProducts
-//    productSections[5] = foodMaterialProducts
-//    productSections[6] = snackProducts
-//    productSections[7] = motherBabyChildProducts
-//    productSections[8] = ClothingShoesAccessoryProducts
-//    productSections[9] = cleaningProducts
-//    productSections[10] = milkProducts
-//    productSections[11] = beverageProducts
-//    productSections[12] = electronicProducts
+    enum ProductCategory {
+        case paperproducts
+        case PersonalCareCosmeticsProducts
+        case breakfastProducts
+        case frozenproducts
+        case homeLifeProducts
+        case foodMaterialProducts
+        case snackProducts
+        case motherBabyChildProducts
+        case ClothingShoesAccessoryProducts
+        case cleaningProducts
+        case milkProducts
+        case beverageProducts
+        case electronicProducts
+    }
 
-    
+
 
     private let webService: WebserviceProtocol = WebService()
 
@@ -67,31 +67,31 @@ final class MainViewModel {
 
                             switch product.categoryBreadcrumb {
                             case "Yemeklik Malzemeler" :
-                                foodMaterialProducts.append(product.productName!)
+                                foodMaterialProducts.append(product)
                             case "Anne - Bebek & Çocuk":
-                                motherBabyChildProducts.append(product.productName!)
+                                motherBabyChildProducts.append(product)
                             case "Kahvaltılık":
-                                breakfastProducts.append(product.productName!)
+                                breakfastProducts.append(product)
                             case "Giyim & Ayakkabı & Aksesuar":
-                                ClothingShoesAccessoryProducts.append(product.productName!)
+                                ClothingShoesAccessoryProducts.append(product)
                             case "Kişisel Bakım & Kozmetik":
-                                PersonalCareCosmeticsProducts.append(product.productName!)
+                                PersonalCareCosmeticsProducts.append(product)
                             case "Ev & Yaşam":
-                                homeLifeProducts.append(product.productName!)
+                                homeLifeProducts.append(product)
                             case "Temizlik":
-                                cleaningProducts.append(product.productName!)
+                                cleaningProducts.append(product)
                             case "Süt & Süt Ürünleri":
-                                milkProducts.append(product.productName!)
+                                milkProducts.append(product)
                             case "Dondurulmuş Ürünler":
-                                frozenproducts.append(product.productName!)
+                                frozenproducts.append(product)
                             case "Kağıt Ürünleri":
-                                paperproducts.append(product.productName!)
+                                paperproducts.append(product)
                             case "Elektronik":
-                                electronicProducts.append(product.productName!)
+                                electronicProducts.append(product)
                             case "İçecek":
-                                beverageProducts.append(product.productName!)
+                                beverageProducts.append(product)
                             case "Atıştırmalık":
-                                snackProducts.append(product.productName!)
+                                snackProducts.append(product)
                             default: break
                             }
                         }

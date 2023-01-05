@@ -8,18 +8,3 @@
 import Foundation
 import UIKit
 
-extension UITabBarItem {
-
-    
-    public enum SystemItem : Int, @unchecked Sendable {
-
-        
-        case home = 0
-
-        case basketList = 1
-
-    }
-}
-
-
-

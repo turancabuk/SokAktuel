@@ -5,7 +5,6 @@
 //  Created by Turan Çabuk on 28.11.2022.
 //  https://api.ceptesok.com/api/customlists/95/products?stock=true&page=1
 
-
 import Foundation
 import UIKit
 
@@ -23,13 +22,11 @@ enum AktuelAPICall: String {
             return "\(baseUrl)"
         }
     }
-    
     var url: URL {
         switch self {
         case .getAktuel:
             return URL(string: "\(baseUrl)")!
         }
-        
     }
 }
 
