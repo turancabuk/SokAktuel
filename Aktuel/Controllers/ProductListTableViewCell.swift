@@ -11,15 +11,16 @@ import CoreData
 
 protocol ProductListDelegate: AnyObject {
     func didSelectProduct()
+    
 }
 
 class ProductListTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var productTitleLabel: UILabel!
     @IBOutlet weak var productCategoryLabel: UILabel!
     @IBOutlet weak var productPriceLabel: UILabel!
     @IBOutlet weak var productImageView: UIImageView!
-
+    
     
     func configCells(model: Product){
         self.productTitleLabel.text = model.title
@@ -32,12 +33,12 @@ class ProductListTableViewCell: UITableViewCell {
     }
     
     @IBAction func addToBasketButtonClicked(_ sender: Any) {
-
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AddBasket")
         fetchRequest.predicate = NSPredicate(format: "productTitle == %@", productTitleLabel.text!)
-
+        
         do {
             let result = try context.fetch(fetchRequest)
             if result.count > 0 {
@@ -53,11 +54,10 @@ class ProductListTableViewCell: UITableViewCell {
                 try context.save()
                 print("success!")
             }
-
+            
         } catch {
             print("error!")
         }
-        
     }
 }
 

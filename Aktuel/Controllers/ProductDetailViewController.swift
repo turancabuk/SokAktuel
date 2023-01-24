@@ -10,7 +10,8 @@ import Kingfisher
 
 class ProductDetailViewModel {
     var selectedProduct: Product!
-    
+    var product: Product!
+
     init(selectedProduct: Product) {
         self.selectedProduct = selectedProduct
     }
@@ -45,4 +46,4 @@ class ProductDetailViewController: UIViewController {
         }
     }
 }
- 
+

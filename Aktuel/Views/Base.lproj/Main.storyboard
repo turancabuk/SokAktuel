@@ -23,7 +23,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <tabBar contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TCb-pa-wJf">
-                                <rect key="frame" x="-4" y="2" width="390" height="49"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="49"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items/>
@@ -33,7 +33,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="134" id="Nc0-1G-H8p" userLabel="ProductCell" customClass="ProductListTableViewCell" customModule="Aktuel" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProductCellIdentifier" rowHeight="134" id="Nc0-1G-H8p" userLabel="ProductListTableViewCell" customClass="ProductListTableViewCell" customModule="Aktuel" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="390" height="134"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nc0-1G-H8p" id="kGO-Zm-3Vi">
@@ -162,7 +162,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="5F5-2K-dW2"/>
+                    <navigationItem key="navigationItem" id="5F5-2K-dW2">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="list.bullet" catalog="system" id="Yxm-NZ-YJy">
+                            <connections>
+                                <action selector="menuButtonClicked:" destination="BYZ-38-t0r" id="gEN-1p-6ma"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="categoriesCollectionView" destination="KY8-PX-HHa" id="pee-un-iWU"/>
@@ -183,7 +189,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="vFV-Z4-eg4">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="821"/>
+                                <rect key="frame" x="0.0" y="0.0" width="408" height="875"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f7e-Oi-oVk">
@@ -320,6 +326,7 @@
     <resources>
         <image name="background" width="932" height="1428"/>
         <image name="basket.fill" catalog="system" width="128" height="108"/>
+        <image name="list.bullet" catalog="system" width="128" height="87"/>
         <image name="logo" width="2560" height="1664"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

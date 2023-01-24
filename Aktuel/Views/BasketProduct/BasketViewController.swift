@@ -25,7 +25,6 @@ class BasketViewController: UIViewController {
         DispatchQueue.main.async {
             self.basketTableView.reloadData()
         }
-        
     }
 }
 extension BasketViewController: UITableViewDelegate, UITableViewDataSource {

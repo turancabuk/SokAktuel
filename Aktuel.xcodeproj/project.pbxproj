@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C0192352944CD30003297A7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0192342944CD30003297A7 /* Extensions.swift */; };
 		5C021DE92959FAE50057FEF7 /* BasketProduct.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C021DE82959FAE50057FEF7 /* BasketProduct.storyboard */; };
 		5C190DDC294B946000080F91 /* BasketModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C190DDA294B946000080F91 /* BasketModel.xcdatamodeld */; };
 		5C190E01294BB84600080F91 /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C190E00294BB84600080F91 /* BasketViewController.swift */; };
@@ -34,7 +33,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5C0192342944CD30003297A7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5C021DE82959FAE50057FEF7 /* BasketProduct.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BasketProduct.storyboard; sourceTree = "<group>"; };
 		5C190DDB294B946000080F91 /* BasketModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BasketModel.xcdatamodel; sourceTree = "<group>"; };
 		5C190E00294BB84600080F91 /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
@@ -105,7 +103,6 @@
 				5C984DA029353504000BB027 /* Constant */,
 				5C984D9B29351E81000BB027 /* Utilities */,
 				5C984D9A29351E74000BB027 /* App */,
-				5C984D9929351E32000BB027 /* Extensions */,
 				5C984D9829351E28000BB027 /* Controllers */,
 				5C984D9729351E19000BB027 /* ViewModels */,
 				5C984D9629351E12000BB027 /* Webservice */,
@@ -161,14 +158,6 @@
 				5C2CD912293E5A3100EC6DE9 /* ProductDetailViewController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		5C984D9929351E32000BB027 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				5C0192342944CD30003297A7 /* Extensions.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		5C984D9A29351E74000BB027 /* App */ = {
@@ -308,7 +297,6 @@
 				5C190DDC294B946000080F91 /* BasketModel.xcdatamodeld in Sources */,
 				5C984D7F29351D62000BB027 /* AppDelegate.swift in Sources */,
 				5C2CD913293E5A3100EC6DE9 /* ProductDetailViewController.swift in Sources */,
-				5C0192352944CD30003297A7 /* Extensions.swift in Sources */,
 				5C984D8129351D62000BB027 /* SceneDelegate.swift in Sources */,
 				5C984DA229353510000BB027 /* Constant.swift in Sources */,
 				5C2CD916293E8D3900EC6DE9 /* ProductCollectionViewCell.swift in Sources */,

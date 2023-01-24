@@ -16,10 +16,7 @@ class BasketTableViewCell: UITableViewCell {
     @IBOutlet weak var basketCategoryLabel: UILabel!
     @IBOutlet weak var basketPriceLabel: UILabel!
     
-    
-    
-    
-    
+
     func configCell(model: NSManagedObject){
         if let imageData = model.value(forKey: "productImage") {
             self.basketImageView.image = UIImage(data: imageData as! Data)
