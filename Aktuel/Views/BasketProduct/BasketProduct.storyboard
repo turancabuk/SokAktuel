@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -56,36 +55,23 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALq-zq-sMk">
-                                                    <rect key="frame" x="177" y="43" width="161" height="22"/>
+                                                    <rect key="frame" x="177" y="43" width="161" height="69"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="161" id="uCE-LQ-iFC"/>
-                                                        <constraint firstAttribute="height" constant="22" id="yu0-X5-rx8"/>
+                                                        <constraint firstAttribute="height" constant="69" id="yu0-X5-rx8"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHl-DI-3Wn">
-                                                    <rect key="frame" x="177" y="73" width="161" height="34"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="34" id="W0B-iC-cFF"/>
-                                                        <constraint firstAttribute="width" constant="161" id="hYn-LM-41d"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" systemColor="linkColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="aak-ca-Ygm" firstAttribute="top" secondItem="BB6-e2-FYP" secondAttribute="bottom" constant="8" symbolic="YES" id="4pY-5s-4UH"/>
-                                                <constraint firstItem="HHl-DI-3Wn" firstAttribute="leading" secondItem="aak-ca-Ygm" secondAttribute="trailing" constant="8" symbolic="YES" id="68v-qK-7RY"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="aak-ca-Ygm" secondAttribute="bottom" constant="-16" id="LMF-Og-uYS"/>
                                                 <constraint firstItem="ALq-zq-sMk" firstAttribute="top" secondItem="BB6-e2-FYP" secondAttribute="bottom" constant="8" symbolic="YES" id="MOi-OB-0o8"/>
                                                 <constraint firstItem="BB6-e2-FYP" firstAttribute="top" secondItem="Lss-OQ-FVi" secondAttribute="topMargin" id="Qx7-6L-WlN"/>
-                                                <constraint firstItem="HHl-DI-3Wn" firstAttribute="top" secondItem="ALq-zq-sMk" secondAttribute="bottom" constant="8" symbolic="YES" id="Sg4-Zk-E0m"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="HHl-DI-3Wn" secondAttribute="bottom" constant="5" id="THM-x3-MrN"/>
                                                 <constraint firstItem="aak-ca-Ygm" firstAttribute="leading" secondItem="Lss-OQ-FVi" secondAttribute="leadingMargin" constant="-20" id="U7S-iK-gqw"/>
                                                 <constraint firstItem="ALq-zq-sMk" firstAttribute="leading" secondItem="aak-ca-Ygm" secondAttribute="trailing" constant="8" symbolic="YES" id="UKy-DF-18L"/>
                                                 <constraint firstItem="BB6-e2-FYP" firstAttribute="leading" secondItem="Lss-OQ-FVi" secondAttribute="leadingMargin" constant="-20" id="ZHX-Dc-laj"/>
@@ -97,7 +83,6 @@
                                         <connections>
                                             <outlet property="basketCategoryLabel" destination="ALq-zq-sMk" id="6GO-ZX-nFD"/>
                                             <outlet property="basketImageView" destination="aak-ca-Ygm" id="BmI-dM-NIR"/>
-                                            <outlet property="basketPriceLabel" destination="HHl-DI-3Wn" id="WMw-qp-zbD"/>
                                             <outlet property="basketTitleLabel" destination="BB6-e2-FYP" id="vIX-IR-UEd"/>
                                         </connections>
                                     </tableViewCell>
@@ -140,8 +125,5 @@
         <image name="background" width="932" height="1428"/>
         <image name="list.bullet.clipboard.fill" catalog="system" width="103" height="128"/>
         <image name="logo" width="2560" height="1664"/>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>

@@ -23,6 +23,5 @@ class BasketTableViewCell: UITableViewCell {
         }
         self.basketTitleLabel?.text = model.value(forKey: "productTitle") as? String
         self.basketCategoryLabel.text = model.value(forKey: "productCategory") as? String
-        self.basketPriceLabel.text = "\(String((model.value(forKey: "productPrice") as? Double) ?? 5))"
         }
 }

@@ -16,8 +16,10 @@ class MainViewController: UIViewController {
     @IBOutlet weak var productTableView: UITableView!
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     let menuView = UIView(frame: CGRect(x: 0, y: 100, width: 250, height: 666))
-    let shopsButton = UIButton(frame: CGRect(x: 50, y: 50, width: 150, height: 40))
-    let aboutUsButton = UIButton(frame: CGRect(x: 50, y: 100, width: 150, height: 40))
+    let shopsButton = UIButton(frame:  CGRect(x: 50, y: 50, width: 150, height: 40))
+    let productsButton = UIButton(frame: CGRect(x: 50, y: 100, width: 150, height: 40))
+    let aboutUsButton = UIButton(frame: CGRect(x: 50, y: 150, width: 150, height: 40))
+
 
 
 
@@ -30,7 +32,7 @@ class MainViewController: UIViewController {
         loadMenuView()
         aboutUsButtonClicked()
         shopsUsButtonClicked()
-
+        productsButtonClicked()
         
         viewModel.getProducts(completion: { [weak self] in
             DispatchQueue.main.async {
@@ -129,12 +131,23 @@ extension MainViewController {
         shopsButton.addTarget(self, action: #selector(goToShopsPage), for: .touchUpInside)
         menuView.addSubview(shopsButton)
     }
+    func productsButtonClicked() {
+        productsButton.backgroundColor = UIColor.blue
+        productsButton.setTitle("Products", for: .normal)
+        productsButton.setTitleColor(UIColor.white, for: .normal)
+        productsButton.addTarget(self, action: #selector(goToProductsPage), for: .touchUpInside)
+        menuView.addSubview(productsButton)
+    }
     @objc func goToAboutUsPage() {
         guard let url = URL(string: "https://kurumsal.sokmarket.com.tr/hakkimizda") else { return }
         UIApplication.shared.open(url)
     }
     @objc func goToShopsPage() {
         guard let url = URL(string: "https://kurumsal.sokmarket.com.tr/magazalarimiz") else { return }
+        UIApplication.shared.open(url)
+    }
+    @objc func goToProductsPage() {
+        guard let url = URL(string: "https://kurumsal.sokmarket.com.tr/markalar/soka-ozel-urunler") else { return }
         UIApplication.shared.open(url)
     }
         
