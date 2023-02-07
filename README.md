@@ -11,14 +11,28 @@
 -  MVVM Desing Pattern
 -  Generic Network Layer
 -  Hamburger Menu
+-  CollectionView
+-  TabBar Controller
+-  Reusable Custom View XIB
+-  Splash Screen Controller
+-  Core Data
+-  Swift WKWebView
+-  Swift EditButton
 -  Extensions
 -  Data Sorting
+-  Hamburger Menü
 
-https://user-images.githubusercontent.com/26140577/216254229-1e0cbdfe-5eab-4928-a547-5888f7754d4e.mov
+
+<img width="345" alt="Ekran Resmi 2023-02-07 23 01 38" src="https://user-images.githubusercontent.com/98350672/217367918-7e95e313-0a7c-447b-87a9-0c0108e35323.png"> <img width="349" alt="Ekran Resmi 2023-02-07 23 01 55" src="https://user-images.githubusercontent.com/98350672/217367998-ab0136c4-39bf-412d-b60b-ddd44b72f940.png">
 
 
-<img width="300" align="left" alt="Screenshot 2023-02-02 at 09 46 44src="https://user-images.githubusercontent.com/26140577/216252518-d1f8ea62-827a-4716-a43f-0240c3279416.png">
-<img width="300" align="left" alt="Screenshot 2023-02-02 at 09 47 29" src="https://user-images.githubusercontent.com/26140577/216252543-3fc46062-cc7d-4e70-a9a2-46fe962f492f.png">
-<img width="300" align="left" alt="Screenshot 2023-02-02 at 09 47 53" src="https://user-images.githubusercontent.com/26140577/216252557-1a5eb73e-4122-4cc4-9862-39117a1fb1f5.png">
-<img width="300" align="left" alt="Screenshot 2023-02-02 at 09 47 03" src="https://user-images.githubusercontent.com/26140577/216252568-87b0d325-e494-447a-b1f8-ff91fc90d2ff.png">
-<img width="300" align="left" alt="Screenshot 2023-02-02 at 09 46 50" src="https://user-images.githubusercontent.com/26140577/216252580-c50baf39-eb0f-48d2-ab98-aed59b0e4838.png">
+<img width="350" alt="Ekran Resmi 2023-02-07 23 02 36" src="https://user-images.githubusercontent.com/98350672/217368058-ceb53855-0d0c-4d88-8088-5348c89b96e1.png"> <img width="348" alt="Ekran Resmi 2023-02-07 23 02 58" src="https://user-images.githubusercontent.com/98350672/217368118-de648646-e655-4893-b0b5-a25ea4128265.png">
+
+
+<img width="351" alt="Ekran Resmi 2023-02-07 23 03 20" src="https://user-images.githubusercontent.com/98350672/217368162-460d2045-14e0-4996-b2ae-509b0dbe2c2d.png"> <img width="349" alt="Ekran Resmi 2023-02-07 23 03 57" src="https://user-images.githubusercontent.com/98350672/217368198-08f8c5c8-f6e4-472e-8783-dad7e8decaec.png">
+
+
+
+
+
+
