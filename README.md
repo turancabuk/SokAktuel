@@ -11,7 +11,6 @@
 -  MVVM Desing Pattern
 -  Generic Network Layer
 -  Hamburger Menu
--  Generic Network Layer
 -  Extensions
 -  Data Sorting
 
