@@ -23,7 +23,7 @@
 -  Hamburger Menü
 
 
-<img width="345" alt="Ekran Resmi 2023-02-07 23 01 38" src="https://user-images.githubusercontent.com/98350672/217367918-7e95e313-0a7c-447b-87a9-0c0108e35323.png"> <img width="349" alt="Ekran Resmi 2023-02-07 23 01 55" src="https://user-images.githubusercontent.com/98350672/217367998-ab0136c4-39bf-412d-b60b-ddd44b72f940.png">
+<img width="300" alt="Ekran Resmi 2023-02-07 23 01 38" src="https://user-images.githubusercontent.com/98350672/217367918-7e95e313-0a7c-447b-87a9-0c0108e35323.png"> <img width="300" alt="Ekran Resmi 2023-02-07 23 01 55" src="https://user-images.githubusercontent.com/98350672/217367998-ab0136c4-39bf-412d-b60b-ddd44b72f940.png">
 
 
 <img width="350" alt="Ekran Resmi 2023-02-07 23 02 36" src="https://user-images.githubusercontent.com/98350672/217368058-ceb53855-0d0c-4d88-8088-5348c89b96e1.png"> <img width="348" alt="Ekran Resmi 2023-02-07 23 02 58" src="https://user-images.githubusercontent.com/98350672/217368118-de648646-e655-4893-b0b5-a25ea4128265.png">
